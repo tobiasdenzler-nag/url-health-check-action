@@ -23,6 +23,8 @@ steps:
       # Basic auth login password pair.
       # Format: `login:password`
       basic-auth: "login:password" # Optional, default is empty
+      # Allow insecure SSL/TLS URLs
+      allow-insecure: false # Optional, default is false
 ```
 
 The action will fail if any of the URLs reports either 4xx or 5xx status codes.

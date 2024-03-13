@@ -105,3 +105,19 @@ jobs:
         with:
           url: https://postman-echo.com/basic-auth
           basic-auth: "postman:password"
+
+  check-allow-insecure:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+    runs-on: ${{ matrix.os }}
+    name: Check allow-insecure
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          url: https://expired.badssl.com/
+          allow-insecure: true
