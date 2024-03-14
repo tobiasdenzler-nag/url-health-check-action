@@ -121,3 +121,19 @@ jobs:
         with:
           url: https://expired.badssl.com/
           allow-insecure: true
+
+  check-allow-insecure-false:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+    runs-on: ${{ matrix.os }}
+    name: Check single, no redirect
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          url: https://postman-echo.com/status/200
+          allow-insecure: false
